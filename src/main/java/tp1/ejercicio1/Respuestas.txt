@@ -1,0 +1,30 @@
+1.4) ¿Qué diferencia encuentra entre las implementaciones de los puntos anteriores?
+
+Resp: La implementacion es la misma, lo unico que cambia es el tipo (subclase) de la lista.
+
+1.6) Analice las implementaciones de la clase ListaDeEnteros y sus subclases.
+a) ¿Podría darle comportamiento a algún método de la superclase ListaDeEnteros? ¿Por qué la clase se define como abstracta?
+    Note que una subclase implementa la lista usando un arreglo de tamaño fijo y la otra usando nodos enlazados.
+
+Resp: En un principio no podria darle implementaciones genericas a los metodos, ya que cada lista se comporta diferente.
+      En este ejemplo particular, ambas implementaciones del metodo tamanio() hacen los mismo.
+       Se podria crear la variable de instancia "tamanio" e implementar la funcion en la clase generica. Estaria bien?
+
+      La clase se define como abstracta ya que independientemente de la lista que sea, ambas hacen los mismo, pero de forma diferente.
+      Al definir la clase como abstracta, permite definir los metodos en la clase general (lista de enteros), y luego implementar
+      cada metodo de forma diferente en c/u de las subclases.
+
+b) Considerando los enlaces entre nodos, ¿qué diferencias existen entre agregar un nodo al principio de la
+   lista, agregar un nodo en el medio y agregar un nodo al final?
+
+   Resp:  Al trabajar con listas enlazadas se debe garantizar la conexion de la misma.
+   Si se agrega al final, solo tenes que apuntar con el ultimo nodo al nuevo.
+   Si se agrega al inicio, el nuevo nodo debe apuntar hacia el principio de la lista.
+   En caso de agregar el nuevo nodo en la mitad de la lista, se debe primero buscar la posicion indicada en la lista.
+   Luego, el nodo que estaria en la posicion anterior al nuevo nodo tiene que apuntar al nuevo nodo respectivamente.
+   Como ultimo paso, el nuevo nodo tiene que referenciar al nodo siguiente.
+
+c) Una lista implementada con arreglos, ¿tiene su primer elemento en el índice del vector: 0, 1 o depende de la implementación?
+
+Resp: En java, los arreglos o vectores tienen la primer posicion en el indice 0.
+      De igual forma, si se trabaja con una lista creada manualmente, puede trabajar de formas diferentes dependiendo de la implementacion del desarrollador.
