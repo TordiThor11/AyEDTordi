@@ -1,12 +1,14 @@
 package tp1.ejercicio3;
 
+import tp1.ejercicio2.ListaEnlazadaGenerica;
+
 import java.util.List;
 
 public class ColaGenerica<T>{
-    private ListaGenerica<T> listaGenerica;
+    private ListaEnlazadaGenerica<T> datos;
 
-    public ColaGenerica(ListaGenerica listaGenerica) {
-        this.listaGenerica = listaGenerica;
+    public ColaGenerica() {
+        this.datos = new ListaEnlazadaGenerica<T>();
     }
 
     public void encolar(T elem){
