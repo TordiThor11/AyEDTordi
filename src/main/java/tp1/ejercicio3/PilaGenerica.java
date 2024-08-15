@@ -1,32 +1,32 @@
 package tp1.ejercicio3;
 
-import java.util.List;
+import tp1.ejercicio2.ListaEnlazadaGenerica;
 
 public class PilaGenerica<T> {
-    private ListaGenerica<T> listaGenerica;
+    private ListaEnlazadaGenerica<T> datos;
 
     public PilaGenerica(ListaGenerica<T> listaGenerica) {
-        this.listaGenerica = listaGenerica;
+        this.datos = new ListaEnlazadaGenerica<T>();
     }
     public void apilar(T elemento){
-        listaGenerica.agregarFinal(elemento);
+        datos.agregarFinal(elemento);
     }
     public T desapilar(){
-        if(listaGenerica.esVacia()){
+        if(datos.esVacia()){
             return null; //Deberia ser trabajado con exeption o returns optativos (parametros defensivos)
         }
-        var elemento = listaGenerica.elemento(listaGenerica.tamanio() - 1);   //pos 0 es el comienzo de la lista
-        listaGenerica.eliminarEn(listaGenerica.tamanio() - 1);
+        var elemento = datos.elemento(datos.tamanio() - 1);   //pos 0 es el comienzo de la lista
+        datos.eliminarEn(datos.tamanio() - 1);
         return elemento;
     }
     public T tope(){
-        if(listaGenerica.esVacia()){
+        if(datos.esVacia()){
             return null; //Deberia ser trabajado con exeption o returns optativos (parametros defensivos)
         }
-        return listaGenerica.elemento(listaGenerica.tamanio() - 1); //Tamanio retorna la cantidad de elementos. Si tiene 3 elementos, el ultimo elemento esta en la pos 2. La lista comienza en 0
+        return datos.elemento(datos.tamanio() - 1); //Tamanio retorna la cantidad de elementos. Si tiene 3 elementos, el ultimo elemento esta en la pos 2. La lista comienza en 0
     }
     public boolean esVacia(){
-        return listaGenerica.esVacia();
+        return datos.esVacia();
     }
 
 }
