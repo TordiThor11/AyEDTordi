@@ -1,0 +1,16 @@
+2.1. ¿Podría resolver los ejercicios del punto 1 utilizando listas genéricas?
+
+Resp: Si, prodria resolverse los mismos ejercicios mientras se pida usar una lista enlazada.
+
+2.4. Analice las implementaciones de la clase ListaGenerica<T> y sus subclases, luego responda:
+
+a) ¿Qué diferencia observa entre las implementaciones de ListaEnlazadaGenerica y ListaDeEnterosEnlazada?
+
+Resp: Es lo mismo. Una trabaja con enteros y nodos que almacenan enteros, mientras que la otra trabaja con nodos genericos T. Permitiendo ser T cualquier tipo de dato.
+
+b) ¿Cómo se define el nodo genérico? ¿Cómo se crea una instancia del mismo?
+Solo necesita un objeto cualquiera T. ????????????
+
+c) ¿Qué devuelve el método elemento() de la lista?
+Devuelve un objeto de tipo object.
+
