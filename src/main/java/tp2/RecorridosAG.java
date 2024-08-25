@@ -14,16 +14,27 @@ public class RecorridosAG {
     }
 
     public ListaGenerica<Integer> recorrerPreOrder(ArbolGeneral<Integer> arbolGeneral) {
-        ListaGenerica<Integer> listaAux = new ListaEnlazadaGenerica<Integer>();
-        System.out.println("Entro: " + !arbolGeneral.esVacio());
-        if (!arbolGeneral.esVacio()) {
-            listaAux.agregarFinal(arbolGeneral.getDato());
+        ListaGenerica<Integer> listaFinal = new ListaEnlazadaGenerica<Integer>();
+        System.out.println("Entro es vacio: " + !arbolGeneral.esVacio());
+        if (!arbolGeneral.esVacio()) {                                       //Si el arbol no es vacio entra al if
+            listaFinal.agregarFinal(arbolGeneral.getDato());                //Agrego el dato del arbol a la lista final
             System.out.println(arbolGeneral.getDato());
             if (arbolGeneral.tieneHijos()) {
-                listaAux = this.recorrerPreOrder(arbolGeneral.getHijos().proximo());//Aca esta mal?
+                System.out.println("Entro tiene hijos: " + arbolGeneral.tieneHijos());
+                ListaGenerica<ArbolGeneral<Integer>> listaHijos = arbolGeneral.getHijos();//Guardo los hijos del arbol en otra estructura auxiliar
+                listaHijos.comenzar();                                                //Preparo la lista
+                while (!listaHijos.fin()) { //Miestras la lista de hijos no llegue a su fin. fin() da true si llegamos al ultimo elemento de la lista
+                    ArbolGeneral<Integer> hijoActual = listaHijos.proximo();    //Retorna el elemento actual y avanza al siguiente.
+                    ListaGenerica<Integer> listaHijosAux = this.recorrerPreOrder(hijoActual);
+                    while (!listaHijosAux.fin()) {  //Mientras no llegue al final
+                        listaFinal.agregarFinal(listaHijosAux.proximo());
+                    }
+                }
+
+
             }
         }
-        return listaAux;
+        return listaFinal;
     }
 
     public ListaGenerica<Integer> numerosImparesMayoresQuePreOrden(ArbolGeneral<Integer> a, Integer n) {

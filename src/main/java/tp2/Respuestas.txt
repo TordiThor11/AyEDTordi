@@ -1,0 +1,14 @@
+2-responda:
+
+a) ¿Qué recorridos conoce para recorrer en profundidad un árbol general?
+Resp:    Los recorridos pre, in y post order.
+
+b) ¿Qué recorridos conoce para recorrer por niveles un árbol general?
+resp:
+
+c) ¿Existe alguna diferencia entre los recorridos preorden, postorden, inorden para
+  recorrer los árboles generales respecto de los árboles binarios? Justifique.
+resp: Si, en los arboles binarios los nodos estan ordenados de alguna forma, si los recorres in-order, se recorre cada nodo de menor a mayor.
+
+d)¿Existe alguna noción de orden entre los elementos de un árbol general? Justifique.
+resp: Entiendo que podria agregarse logica a cada arbol para ordenar los nodos dependiendo de la necesidad del mismo
