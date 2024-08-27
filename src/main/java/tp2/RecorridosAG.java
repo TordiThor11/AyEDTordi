@@ -59,12 +59,19 @@ public class RecorridosAG {
         return listaFinal;
     }
 
-    public ListaGenerica<Integer> numerosImparesMayoresQuePreOrden(ArbolGeneral<Integer> a, Integer n) {
+    public ListaGenerica<Integer> numerosImparesMayoresQuePreOrden(ArbolGeneral<Integer> a, Integer n) {//podria llamarse diferente, ya que sirve para filtrar
         //Método que retorna una lista con los elementos impares del árbol “a” que sean mayores
         //al valor “n” pasados como parámetros, recorrido en preorden.
-        ListaGenerica<Integer> listaAux = new ListaEnlazadaGenerica<Integer>();
-
-        return null;
+        ListaGenerica<Integer> listaPreOrder = recorrerPreOrder(a);
+        ListaGenerica<Integer> listaFiltrada = new ListaEnlazadaGenerica<Integer>();
+        while (!listaPreOrder.fin()) {
+            Integer numero = listaPreOrder.proximo();
+            if (esImpar(numero) && esMayor(numero, n)) {
+                System.out.println("Numero........!!.. " + numero);
+                listaFiltrada.agregarFinal(numero);
+            }
+        }
+        return listaFiltrada;
     }
 
     public ListaGenerica<Integer> numerosImparesMayoresQueInOrden(ArbolGeneral<Integer> a, Integer n) {
