@@ -13,9 +13,11 @@ public class RecorridosAG {
         return primero > segundo;
     }
 
+    /*
     public ListaGenerica<Integer> recorrerPreOrder(ArbolGeneral<Integer> arbolGeneral) {
+        System.out.println("Nuevo arbol...");
         ListaGenerica<Integer> listaFinal = new ListaEnlazadaGenerica<Integer>();
-        System.out.println("Entro es vacio: " + !arbolGeneral.esVacio());
+        System.out.println("Entro al if esVacio: " + !arbolGeneral.esVacio());
         if (!arbolGeneral.esVacio()) {                                       //Si el arbol no es vacio entra al if
             listaFinal.agregarFinal(arbolGeneral.getDato());                //Agrego el dato del arbol a la lista final
             System.out.println(arbolGeneral.getDato());
@@ -30,8 +32,28 @@ public class RecorridosAG {
                         listaFinal.agregarFinal(listaHijosAux.proximo());
                     }
                 }
-
-
+            }
+        }
+        return listaFinal;
+    }*/
+    public ListaGenerica<Integer> recorrerPreOrder(ArbolGeneral<Integer> arbolGeneral) {
+        System.out.println("Nuevo arbol...");
+        ListaGenerica<Integer> listaFinal = new ListaEnlazadaGenerica<Integer>();
+        System.out.println("Entro al if esVacio: " + !arbolGeneral.esVacio());
+        if (!arbolGeneral.esVacio()) {                                       //Si el arbol no es vacio entra al if
+            listaFinal.agregarFinal(arbolGeneral.getDato());                //Agrego el dato del arbol a la lista final
+            System.out.println(arbolGeneral.getDato());
+            if (arbolGeneral.tieneHijos()) {
+                System.out.println("Entro tiene hijos: " + arbolGeneral.tieneHijos());
+                ListaGenerica<ArbolGeneral<Integer>> listaHijos = arbolGeneral.getHijos();//Guardo los hijos del arbol en otra estructura auxiliar
+                listaHijos.comenzar();                                                //Preparo la lista
+                while (!listaHijos.fin()) { //Miestras la lista de hijos no llegue a su fin. fin() da true si llegamos al ultimo elemento de la lista
+                    ArbolGeneral<Integer> hijoActual = listaHijos.proximo();    //Retorna el elemento actual y avanza al siguiente.
+                    ListaGenerica<Integer> listaHijosAux = this.recorrerPreOrder(hijoActual);
+                    while (!listaHijosAux.fin()) {  //Mientras no llegue al final
+                        listaFinal.agregarFinal(listaHijosAux.proximo());
+                    }
+                }
             }
         }
         return listaFinal;
