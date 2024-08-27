@@ -10,12 +10,15 @@ public class Main {
 
         arbolGeneral.agregarHijo(arbolGeneral2);
         arbolGeneral.agregarHijo(new ArbolGeneral<>(15));
-        var listaPreOrder = recorredor.recorrerPreOrder(arbolGeneral);
+        //var listaPreOrder = recorredor.recorrerPreOrder(arbolGeneral);
         //EN PRE-ORDER --> 10 - 11 - 5 - 15
-        System.out.println("Tamanio de lista: " + listaPreOrder.tamanio()); //Lista recorrida preorder sin filtrar ningun dato
+        //System.out.println("Tamanio de lista: " + listaPreOrder.tamanio()); //Lista recorrida preorder sin filtrar ningun dato
 
-        var listaFiltrada = recorredor.numerosImparesMayoresQuePreOrden(arbolGeneral, 13);
-        System.out.println("Tamanio de lista: " + listaFiltrada.tamanio());
+        //var listaFiltrada = recorredor.numerosImparesMayoresQuePreOrden(arbolGeneral, 13);
+        //System.out.println("Tamanio de lista: " + listaFiltrada.tamanio());
 
+        var listaPostOrder = recorredor.recorrerPostOrder(arbolGeneral);
+        //EN post-ORDER --> 11 - 5 - 15 - 10
+        System.out.println("Tamanio de lista: " + listaPostOrder.tamanio());
     }
 }
