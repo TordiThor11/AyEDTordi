@@ -14,7 +14,7 @@ public class RecorridosAG {
     }
 
 
-    public ListaGenerica<Integer> recorrerPreOrder(ArbolGeneral<Integer> arbolGeneral) {
+    public ListaGenerica<Integer> recorrerPreOrder(ArbolGeneral<Integer> arbolGeneral) { //--> 10 - 11 - 5 - 15
 //        System.out.println("Nuevo arbol...");
         ListaGenerica<Integer> listaFinal = new ListaEnlazadaGenerica<Integer>();
 //        System.out.println("Entro al if esVacio: " + !arbolGeneral.esVacio());
@@ -36,29 +36,8 @@ public class RecorridosAG {
         }
         return listaFinal;
     }
-
-    public ListaGenerica<Integer> recorrerPostOrder(ArbolGeneral<Integer> arbolGeneral) {//salida --> 10 - 11 - 5 - 15
-//        System.out.println("Nuevo arbol...");
-        ListaGenerica<Integer> listaFinal = new ListaEnlazadaGenerica<Integer>();
-        if (!arbolGeneral.esVacio()) {                                       //Si el arbol no es vacio entra al if
-            if (arbolGeneral.tieneHijos()) {
-                ListaGenerica<ArbolGeneral<Integer>> listaHijos = arbolGeneral.getHijos();//Guardo los hijos del arbol en otra estructura auxiliar
-                listaHijos.comenzar();                                                //Preparo la lista
-                while (!listaHijos.fin()) { //Miestras la lista de hijos no llegue a su fin. fin() da true si llegamos al ultimo elemento de la lista
-                    ArbolGeneral<Integer> hijoActual = listaHijos.proximo();    //Retorna el elemento actual y avanza al siguiente.
-                    ListaGenerica<Integer> listaHijosAux = this.recorrerPreOrder(hijoActual);
-                    while (!listaHijosAux.fin()) {  //Mientras no llegue al final
-                        listaFinal.agregarFinal(listaHijosAux.proximo());
-                    }
-                }
-            }
-            listaFinal.agregarFinal(arbolGeneral.getDato());                //Agrego el dato del arbol a la lista final
-            System.out.println(arbolGeneral.getDato());
-        }
-        return listaFinal;
-    }
-
-    public ListaGenerica<Integer> recorrerPostOrder2(ArbolGeneral<Integer> arbolGeneral) { //salida --> 5-11-15-10
+    
+    public ListaGenerica<Integer> recorrerPostOrder(ArbolGeneral<Integer> arbolGeneral) { //salida --> 5-11-15-10
         System.out.println("Entro al arbol con dato (Sin guardarlo, solo entro): " + arbolGeneral.getDato());
         ListaGenerica<Integer> listaFinal = new ListaEnlazadaGenerica<Integer>();
         if (!arbolGeneral.esVacio()) {                                       //Si el arbol no es vacio entra al if
