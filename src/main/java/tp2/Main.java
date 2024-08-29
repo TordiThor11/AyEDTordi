@@ -7,10 +7,13 @@ public class Main {
         var recorredor = new RecorridosAG();
         ArbolGeneral<Integer> arbolGeneral = new ArbolGeneral<Integer>(10);
 
-        ArbolGeneral<Integer> arbolGeneral2 = new ArbolGeneral<Integer>(11);
-        arbolGeneral2.agregarHijo(new ArbolGeneral<Integer>(5));
+        ArbolGeneral<Integer> arbolGeneral11 = new ArbolGeneral<Integer>(11);
+        ArbolGeneral<Integer> arbolGeneral71 = new ArbolGeneral<Integer>(71);
 
-        arbolGeneral.agregarHijo(arbolGeneral2);
+        arbolGeneral11.agregarHijo(arbolGeneral71);
+        arbolGeneral11.agregarHijo(new ArbolGeneral<Integer>(5));
+        arbolGeneral.agregarHijo(arbolGeneral11);
+
         arbolGeneral.agregarHijo(new ArbolGeneral<>(15));
 
         //Test pre-order --> 10 - 11 - 5 - 15
@@ -33,11 +36,19 @@ public class Main {
 
 
         //Test in-order --> 5 - 11 - 10 - 15
-        ListaGenerica<Integer> listaInOrder = recorredor.recorrerInOrder(arbolGeneral);
+        /*ListaGenerica<Integer> listaInOrder = recorredor.recorrerInOrder(arbolGeneral);
         System.out.println("Tamanio de la lista in-order: " + listaInOrder.tamanio());
         listaInOrder.comenzar();
         while (!listaInOrder.fin()) {
             System.out.println(listaInOrder.proximo());
+        }*/
+
+        //Test por niveles 10-11-15-5
+        ListaGenerica<Integer> listaPorNiveles = recorredor.recorridoPorNiveles(arbolGeneral);
+        System.out.println("Tamanio de la lista por niveles: " + listaPorNiveles.tamanio());
+        listaPorNiveles.comenzar();
+        while (!listaPorNiveles.fin()) {
+            System.out.println(listaPorNiveles.proximo());
         }
     }
 }

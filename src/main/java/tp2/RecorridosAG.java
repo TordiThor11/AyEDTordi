@@ -2,6 +2,7 @@ package tp2;
 
 import tp1.ejercicio2.ListaEnlazadaGenerica;
 import tp1.ejercicio2.ListaGenerica;
+import tp1.ejercicio3.ColaGenerica;
 
 public class RecorridosAG {
 
@@ -36,7 +37,7 @@ public class RecorridosAG {
         }
         return listaFinal;
     }
-    
+
     public ListaGenerica<Integer> recorrerPostOrder(ArbolGeneral<Integer> arbolGeneral) { //salida --> 5-11-15-10
         System.out.println("Entro al arbol con dato (Sin guardarlo, solo entro): " + arbolGeneral.getDato());
         ListaGenerica<Integer> listaFinal = new ListaEnlazadaGenerica<Integer>();
@@ -135,5 +136,20 @@ public class RecorridosAG {
         return null;
     }
 
+    public ListaGenerica<Integer> recorridoPorNiveles(ArbolGeneral<Integer> arbolGeneral) {//Recorrido 10-11-15-5
+        ListaGenerica<Integer> listaFinal = new ListaEnlazadaGenerica<Integer>();
+        ColaGenerica<ArbolGeneral<Integer>> colaGenerica = new ColaGenerica<ArbolGeneral<Integer>>();
+        colaGenerica.encolar(arbolGeneral);
+        while (!colaGenerica.esVacia()) {
+            ArbolGeneral<Integer> nodo = colaGenerica.desencolar();
+            listaFinal.agregarFinal(nodo.getDato());
+            System.out.println("Se agrego a la lista el dato: " + nodo.getDato());
+            ListaGenerica<ArbolGeneral<Integer>> listaHijos = nodo.getHijos();
+            while (!listaHijos.fin()) {//Si me falta el ultimo dato puede ser esto
+                colaGenerica.encolar(listaHijos.proximo());//Agarra el nodo y avanza al siguiente
+            }
+        }
+        return listaFinal;
+    }
 
 }
