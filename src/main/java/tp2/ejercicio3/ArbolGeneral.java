@@ -1,4 +1,4 @@
-package tp2;
+package tp2.ejercicio3;
 
 import tp1.ejercicio2.ListaEnlazadaGenerica;
 import tp1.ejercicio2.ListaGenerica;
