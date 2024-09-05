@@ -9,6 +9,14 @@ public class AreaEmpresa {
         this.tardanzaDeTransmision = tardanzaDeTransmision;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getTardanzaDeTransmision() {
+        return tardanzaDeTransmision;
+    }
+
     @Override
     public String toString() {
         return "Nombre: " + nombre + "; Tardanza: " + tardanzaDeTransmision;
