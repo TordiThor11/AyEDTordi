@@ -103,11 +103,22 @@ public class ArbolBinario<T> {
     }
 
 
-    public ArbolBinario<T> espejo() {
+    public ArbolBinario<T> espejo() throws Exception {
+        if (this.esVacio()) {
+            throw new Exception("El arbol es vacio (No tiene datos ni hijos).");
+        }
+        ArbolBinario<T> arbolEspejo = new ArbolBinario<T>(this.dato);
+        if (!this.esHoja()) {
+            if (this.tieneHijoIzquierdo()) {
+                arbolEspejo.agregarHijoDerecho(this.getHijoIzquierdo().espejo());
+            }
+            if (this.tieneHijoDerecho()) {
+                arbolEspejo.agregarHijoIzquierdo(this.getHijoDerecho().espejo());
+            }
 
-        return null;
+        }
+        return arbolEspejo;
     }
-
 
     public void entreNiveles(int n, int m) {
 
