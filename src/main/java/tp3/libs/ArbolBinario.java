@@ -120,9 +120,28 @@ public class ArbolBinario<T> {
         return arbolEspejo;
     }
 
-    public void entreNiveles(int n, int m) {
-
+    public void entreNiveles(int n, int m) throws Exception {
+        ColaGenerica<ArbolBinario<T>> colaNodosArbol = new ColaGenerica<ArbolBinario<T>>();
+        ColaGenerica<Integer> colaNiveles = new ColaGenerica<Integer>();
+        colaNodosArbol.encolar(this);
+        colaNiveles.encolar(0); // Encola en nivel de la raiz (0)
+        while (!colaNodosArbol.esVacia()) {
+            var nodo = colaNodosArbol.desencolar();
+            int nivelDelNodo = colaNiveles.desencolar();
+            if (0 > n) {    //Podria preguntar tambien si m > alturaDelArbol. Pero no tengo un metodo para eso. Ademas no es lo que pide.
+                throw new Exception("El nivel del nodo pasado por parametro no es valido");
+            }
+            if (nivelDelNodo >= n && nivelDelNodo <= m) {
+                System.out.println("Dato:" + nodo.dato + " ;Nivel:" + nivelDelNodo);
+            }
+            if (nodo.tieneHijoIzquierdo()) {
+                colaNodosArbol.encolar(nodo.getHijoIzquierdo());
+                colaNiveles.encolar(nivelDelNodo + 1);
+            }
+            if (nodo.tieneHijoDerecho()) {
+                colaNodosArbol.encolar(nodo.getHijoDerecho());
+                colaNiveles.encolar(nivelDelNodo + 1);
+            }
+        }
     }
-
-
 }

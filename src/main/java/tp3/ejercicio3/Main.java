@@ -1,14 +1,13 @@
-package tp3.ejercicio1;
+package tp3.ejercicio3;
 
 import tp3.libs.ArbolBinario;
 
 public class Main {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         ArbolBinario<Integer> arbolBinarioMain = setUpArbol();
-//        System.out.println("Cantidad de hijos: " + arbolBinarioMain.contarHojas());
-//        ArbolBinario<Integer> arbolEspejo = arbolBinarioMain.espejo();
-//        System.out.println("Cantidad de hijos: " + arbolEspejo.contarHojas());
-        arbolBinarioMain.entreNiveles(1, 2);
+        ContadorArbol contadorArbol = new ContadorArbol(arbolBinarioMain);
+        var listaNumeros = contadorArbol.numerosParesInOrder();
+        System.out.println(listaNumeros.toString());
     }
 
     private static ArbolBinario<Integer> setUpArbol() {
