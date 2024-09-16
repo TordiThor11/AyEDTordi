@@ -104,7 +104,7 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
     public String toString() {
         return this.getDato().toString();
     }
-/*
+
     public boolean esVacio() {
         return this.getDato() == null && !this.tieneHijoIzquierdo() && !this.tieneHijoDerecho();
     }
@@ -113,6 +113,12 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
         return (!this.tieneHijoIzquierdo() && !this.tieneHijoDerecho());
 
     }
-*/
 
+    public boolean tieneHijoIzquierdo() {
+        return this.hijoIzquierdo != null;
+    }
+
+    public boolean tieneHijoDerecho() {
+        return this.hijoDerecho != null;
+    }
 }
