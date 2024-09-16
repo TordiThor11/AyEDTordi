@@ -1,13 +1,12 @@
-package tp3.ejercicio3;
+package tp3.ejercicio4;
 
 import tp3.libs.ArbolBinario;
 
 public class Main {
     public static void main(String[] args) {
-        ArbolBinario<Integer> arbolBinarioMain = setUpArbol();
-        ContadorArbol contadorArbol = new ContadorArbol(arbolBinarioMain);
-        var listaNumerosPares = contadorArbol.numerosParesPostOrder();
-        System.out.println(listaNumerosPares.toString());
+        ArbolBinario<Integer> arbolBinario = setUpArbol();
+        RedBinariaLlena redBinariaLlena = new RedBinariaLlena(arbolBinario);
+        System.out.println(redBinariaLlena.retardoReenvio());
     }
 
     private static ArbolBinario<Integer> setUpArbol() {

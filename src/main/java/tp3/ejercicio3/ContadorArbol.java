@@ -10,22 +10,57 @@ public class ContadorArbol {
         this.arbolBinario = arbolBinario;
     }
 
-    public tp1.ejercicio2.ListaEnlazadaGenerica<Integer> numerosParesInOrder() {//se puede resolver con una funcion aux?
-        ListaEnlazadaGenerica<Integer> listaEnteros = new ListaEnlazadaGenerica<>();
-        ArbolBinario<Integer> arbolAux = this.arbolBinario;
-        if (arbolAux.esVacio()) {
-            if (arbolAux.tieneHijoIzquierdo()) {
-                this.arbolBinario = arbolAux.getHijoIzquierdo();
-                listaEnteros = numerosParesInOrder();
-            }
-            listaEnteros.agregarFinal(arbolBinario.getDato());
-            if (arbolAux.tieneHijoDerecho()) {
-                this.arbolBinario = arbolAux.getHijoDerecho();
-                listaEnteros = numerosParesInOrder();
+    public tp1.ejercicio2.ListaEnlazadaGenerica<Integer> numerosParesInOrder() {
+        ListaEnlazadaGenerica<Integer> listaEnteros = listaDelRecorridoInOrder(this.arbolBinario, new ListaEnlazadaGenerica<Integer>());
+        ListaEnlazadaGenerica<Integer> listaNumerosPares = new ListaEnlazadaGenerica<Integer>();
+        listaEnteros.comenzar();
+        while (!listaEnteros.fin()) {
+            int numero = listaEnteros.proximo();
+            if (numero % 2 == 0) {
+                listaNumerosPares.agregarFinal(numero);
             }
         }
-        this.arbolBinario = arbolAux;
+        return listaNumerosPares;
+    }
+
+    private ListaEnlazadaGenerica<Integer> listaDelRecorridoInOrder(ArbolBinario<Integer> arbolBinario, ListaEnlazadaGenerica<Integer> listaEnteros) {//necesita ser invocada con una lista vacia, podria agregar un metodo para resolver esa precondicion e invocar a este mismo metodo.
+        if (!arbolBinario.esVacio()) {
+            if (arbolBinario.tieneHijoIzquierdo()) {
+                listaEnteros = listaDelRecorridoInOrder(arbolBinario.getHijoIzquierdo(), listaEnteros);
+            }
+            listaEnteros.agregarFinal(arbolBinario.getDato());
+            if (arbolBinario.tieneHijoDerecho()) {
+                listaEnteros = listaDelRecorridoInOrder(arbolBinario.getHijoDerecho(), listaEnteros);
+            }
+        }
         return listaEnteros;
     }
-//    public tp1.ejercicio2.ListaEnlazadaGenerica numerosPares();
+
+    public tp1.ejercicio2.ListaEnlazadaGenerica<Integer> numerosParesPostOrder() {
+        ListaEnlazadaGenerica<Integer> listaEnteros = listaDelRecorridoPostOrder(this.arbolBinario, new ListaEnlazadaGenerica<Integer>());
+        ListaEnlazadaGenerica<Integer> listaNumerosPares = new ListaEnlazadaGenerica<Integer>();
+        listaEnteros.comenzar();
+        while (!listaEnteros.fin()) {
+            int numero = listaEnteros.proximo();
+            if (numero % 2 == 0) {
+                listaNumerosPares.agregarFinal(numero);
+            }
+        }
+        return listaNumerosPares;
+    }
+
+    private ListaEnlazadaGenerica<Integer> listaDelRecorridoPostOrder(ArbolBinario<Integer> arbolBinario, ListaEnlazadaGenerica<Integer> listaEnteros) {//necesita ser invocada con una lista vacia, podria agregar un metodo para resolver esa precondicion e invocar a este mismo metodo.
+        if (!arbolBinario.esVacio()) {
+            if (arbolBinario.tieneHijoIzquierdo()) {
+                listaEnteros = listaDelRecorridoPostOrder(arbolBinario.getHijoIzquierdo(), listaEnteros);
+            }
+
+            if (arbolBinario.tieneHijoDerecho()) {
+                listaEnteros = listaDelRecorridoPostOrder(arbolBinario.getHijoDerecho(), listaEnteros);
+            }
+            listaEnteros.agregarFinal(arbolBinario.getDato());
+//            System.out.println("Lista postOr: " + listaEnteros.toString());
+        }
+        return listaEnteros;
+    }
 }

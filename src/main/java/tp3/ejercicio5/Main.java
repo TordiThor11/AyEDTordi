@@ -1,13 +1,12 @@
-package tp3.ejercicio3;
+package tp3.ejercicio5;
 
 import tp3.libs.ArbolBinario;
 
 public class Main {
     public static void main(String[] args) {
-        ArbolBinario<Integer> arbolBinarioMain = setUpArbol();
-        ContadorArbol contadorArbol = new ContadorArbol(arbolBinarioMain);
-        var listaNumerosPares = contadorArbol.numerosParesPostOrder();
-        System.out.println(listaNumerosPares.toString());
+        ArbolBinario<Integer> arbolBinario = setUpArbol();
+        ProfundidadDeArbolBinario profundidadDeArbolBinario = new ProfundidadDeArbolBinario(arbolBinario);
+        System.out.println("La suma de los elementos en el nivel " + 2 + " es de = " + profundidadDeArbolBinario.sumaElementosProfundidad(3));
     }
 
     private static ArbolBinario<Integer> setUpArbol() {
