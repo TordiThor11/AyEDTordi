@@ -121,4 +121,12 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
     public boolean tieneHijoDerecho() {
         return this.hijoDerecho != null;
     }
+    /*public ListaGenerica<Integer> caminoRecorrido(ArbolBinarioDeBusqueda<Integer> abb) throws Exception {//El parametro es el nodo a buscar.
+        ListaGenerica<Integer> listaRecorridos = new ListaEnlazadaGenerica<Integer>();//guarda el recorrido del arbol, si va a la izq, el valor del nodo es negativo.
+        if (abb.esVacio()) {
+            throw new Exception("El arbol esta vacio");
+        }
+        if ()
+            return listaRecorridos;
+    }*/
 }
