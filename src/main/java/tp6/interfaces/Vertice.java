@@ -11,4 +11,6 @@ public interface Vertice<T> {
 
     public int getPosicion();
 
+    public void setPosicion(int posicion);
+
 }

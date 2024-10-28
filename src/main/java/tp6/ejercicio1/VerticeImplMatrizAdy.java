@@ -28,4 +28,12 @@ public class VerticeImplMatrizAdy<T> implements Vertice<T> {
     public void setPosicion(int posicion) {
         this.posicion = posicion;
     }
+
+    @Override
+    public String toString() {
+        return "VerticeImplMatrizAdy{" +
+                "dato=" + dato +
+                ", posicion=" + posicion +
+                '}';
+    }
 }

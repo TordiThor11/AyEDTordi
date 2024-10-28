@@ -24,6 +24,7 @@ public class GrafoImplMatrizAdy<T> implements Grafo<T> {
             return;
         }
 
+        v.setPosicion(vertices.tamanio());//La posicion del primer vertice es 0.
         vertices.agregarFinal(v);
     }
 
@@ -36,27 +37,28 @@ public class GrafoImplMatrizAdy<T> implements Grafo<T> {
 
     @Override
     public void conectar(Vertice<T> origen, Vertice<T> destino) {
-
+        matrizAdy[origen.getPosicion()][destino.getPosicion()] = 1;
     }
 
     @Override
     public void conectar(Vertice<T> origen, Vertice<T> destino, int peso) {
-
+        matrizAdy[origen.getPosicion()][destino.getPosicion()] = peso;
     }
 
     @Override
     public void desConectar(Vertice<T> origen, Vertice<T> destino) {
-
+        matrizAdy[origen.getPosicion()][destino.getPosicion()] = 0;
     }
 
     @Override
-    public boolean esAdyacente(Vertice<T> origen, Vertice<T> destino) {
-        return false;
+    public boolean esAdyacente(Vertice<T> origen, Vertice<T> destino) { //si origen apunta a destino, entonces es true.
+
+        return !(matrizAdy[origen.getPosicion()][destino.getPosicion()] == 0);
     }
 
     @Override
     public int peso(Vertice<T> origen, Vertice<T> destino) {
-        return 0;
+        return matrizAdy[origen.getPosicion()][destino.getPosicion()];
     }
 
     @Override
@@ -71,11 +73,17 @@ public class GrafoImplMatrizAdy<T> implements Grafo<T> {
 
     @Override
     public ListaGenerica<Arista<T>> listaDeAdyacentes(Vertice<T> v) {
-        return null;
+        ListaGenerica<Arista<T>> listaVertices = new ListaEnlazadaGenerica<Arista<T>>();
+        for (int i = 0; i < maxVertices; i++) {
+            if (matrizAdy[v.getPosicion()][i] != 0) {
+                listaVertices.agregarFinal(new AristaImpl<T>(vertices.elemento(i), matrizAdy[v.getPosicion()][i]));
+            }
+        }
+        return listaVertices;
     }
 
     @Override
     public Vertice<T> vertice(int posicion) {
-        return null;
+        return vertices.elemento(posicion);
     }
 }
