@@ -1,7 +1,8 @@
-package tp6.ejercicio1;
+package tp6.ejercicio1.matriz;
 
 import tp1.ejercicio2.ListaEnlazadaGenerica;
 import tp1.ejercicio2.ListaGenerica;
+import tp6.ejercicio1.AristaImpl;
 import tp6.interfaces.Arista;
 import tp6.interfaces.Grafo;
 import tp6.interfaces.Vertice;

@@ -1,4 +1,4 @@
-package tp6.ejercicio1;
+package tp6.ejercicio1.matriz;
 
 public class Main {
     public static void main(String[] args) {

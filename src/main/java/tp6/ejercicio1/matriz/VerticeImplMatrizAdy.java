@@ -1,4 +1,4 @@
-package tp6.ejercicio1;
+package tp6.ejercicio1.matriz;
 
 import tp6.interfaces.Vertice;
 
