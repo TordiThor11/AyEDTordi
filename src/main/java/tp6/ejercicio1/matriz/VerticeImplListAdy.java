@@ -2,11 +2,11 @@ package tp6.ejercicio1.matriz;
 
 import tp6.interfaces.Vertice;
 
-public class VerticeImplMatrizAdy<T> implements Vertice<T> {
+public class VerticeImplListAdy<T> implements Vertice<T> {
     private T dato;
     private int posicion;
 
-    public VerticeImplMatrizAdy(T dato) {
+    public VerticeImplListAdy(T dato) {
         this.dato = dato;
     }
 

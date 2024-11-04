@@ -1,5 +1,6 @@
 package tp6.ejercicio1.lista;
 
+import tp1.ejercicio2.ListaEnlazadaGenerica;
 import tp1.ejercicio2.ListaGenerica;
 import tp6.ejercicio1.AristaImpl;
 import tp6.interfaces.Arista;
@@ -13,6 +14,7 @@ public class VerticeImplListAdy<T> implements Vertice<T> {
 
 
     public VerticeImplListAdy(T dato) {
+        adyacentes = new ListaEnlazadaGenerica<>();
         this.dato = dato;
     }
 
@@ -22,18 +24,31 @@ public class VerticeImplListAdy<T> implements Vertice<T> {
     }
 
     public void desconectar(Vertice<T> vertice) {
-//        adyacentes.eliminar();
+        adyacentes.eliminar(obtenerArista(vertice));
     }
 
     public boolean esAdyacente(Vertice<T> vertice) {
-        return false;
+        var arista = obtenerArista(vertice);
+        return this.adyacentes.incluye(arista);
     }
 
     public int peso(Vertice<T> vertice) {
-        return 0;
+        var arista = obtenerArista(vertice);
+        if (arista == null) {
+            return 0; //si no encuentra la arista, entonces no tiene conexion con el vertice, por lo que es 0.
+        }
+        return arista.peso();
     }
 
     public Arista<T> obtenerArista(Vertice<T> vertice) {
+        adyacentes.comenzar();
+        Arista<T> arista;
+        while (!adyacentes.fin()) {
+            arista = adyacentes.proximo();
+            if (arista.verticeDestino() == vertice) {
+                return arista;
+            }
+        }
         return null;
     }
 
